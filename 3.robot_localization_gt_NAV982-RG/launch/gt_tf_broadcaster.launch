@@ -1,0 +1,43 @@
+<launch>
+
+	<arg name="gt_output_path"      default="$(find robot_localization)/_output_/"/>
+	
+	<arg name="gt_use_G_frame"      default="true"/>
+	<arg name="gt_use_debug"      default="false"/>
+
+	<arg name="rviz_gt"      default="false"/>
+
+	<arg name="gt_tf_calibration_file"
+    default="$(find robot_localization)/config/msckf-mynt_imu_a27_is_svd.yaml"/>
+
+  <node pkg="robot_localization" type="gt_tf_broadcaster" name="gt_tf_broadcaster" output="screen">
+			
+			<!-- Calibration parameters -->
+      <rosparam command="load" file="$(arg gt_tf_calibration_file)"/>
+
+			<!-- remap subscribed topic name -->
+			<remap from="odom" to="gps_rtk_msgs/odom"/>
+			
+			<!-- frame id -->
+			<param name="odom_frame_id" value="world"/>
+
+			<param name="world_frame_id" value="world_UTM_"/>
+			<param name="gpsInit_frame_id" value="world_UTM_init"/>	
+			<param name="odom_gps_frame_id" value="odom_gps"/>
+			<param name="gps_base_frame_id" value="gps_base_link"/>
+			<param name="base_frame_id_W" value="gt_base_link_W"/>
+			<param name="base_frame_id_GB" value="gt_base_link_GB"/>
+			<param name="base_frame_id_GS" value="gt_base_link_GS"/>
+
+			<param name="output_path"   value="$(arg gt_output_path)"/>
+
+			<param name="use_G_frame"   value="$(arg gt_use_G_frame)"/>
+			<param name="use_debug"   value="$(arg gt_use_debug)"/>
+
+  </node>
+
+	<!-- RVIZ -->
+  <node if="$(arg rviz_gt)" pkg="rviz" type="rviz" name="rviz"
+        args="-d $(find robot_localization)/viz/gps.rviz"/>
+
+</launch>

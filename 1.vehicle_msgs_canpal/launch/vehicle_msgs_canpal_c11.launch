@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch> 
+<param name="vehicle_record_or_read" type = "string" value = "record" />
+<node pkg="vehicle_msgs_canpal" type="vehicle_msgs_canpal_c11" name="vehicle_msgs_canpal_c11" output="screen"/>
+<arg name="write_csv_path" default = "$(find vehicle_msgs_canpal)/_output_/" />
+<param name="vehilce_write_csv_path_name" value = "$(arg write_csv_path)" type = "string"/>
+</launch>

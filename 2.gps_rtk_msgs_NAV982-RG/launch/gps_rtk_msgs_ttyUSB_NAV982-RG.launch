@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch> 
+    <param name="gps_rtk_record_or_read" type = "string" value = "record" />
+    <node pkg="gps_rtk_msgs" type="gps_rtk_msgs" name="gps_rtk_msgs" output="screen"/>
+    <param name="gps_rtk_serialport" value="/dev/ttyUSB0" type="string"/> 
+    <param name="gps_rtk_baudrate" value = "921600" type = "int"/>
+    <param name="gps_rtk_rate" value = "100" type = "int"/>   
+    <arg name="write_csv_path" default = "$(find gps_rtk_msgs)/_output_/" />
+    <param name="gps_rtk_write_csv_path_name" value = "$(arg write_csv_path)" type = "string"/>  
+</launch>
+
+

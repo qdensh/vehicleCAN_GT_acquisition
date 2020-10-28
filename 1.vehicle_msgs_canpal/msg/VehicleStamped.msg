@@ -1,0 +1,22 @@
+std_msgs/Header header
+float64 vehicle_speed_vcu
+float64 vehicle_speed
+float64 vehicle_acceleration
+float64 vehicle_speed_f
+float64 vehicle_speed_r
+float64 vehicle_steerAngle_f
+float64 vehicle_steerAngle_sp_f
+float64 vehicle_steerAngle_r
+float64 vehicle_steerAngle_sp_r
+float64 speed_measured_mcuf
+float64 speed_measured_mcur
+float64 sasf_steering_wheel_angle
+float64 sasr_steering_wheel_angle
+float64 sasf_steering_wheel_angle_speed
+float64 sasr_steering_wheel_angle_speed
+float64 tbox_shift_level_request
+float64 tbox_target_speed
+float64 tbox_st_wheel_angle_req
+float64 tbox_st_wheel_angle_req_rear
+
+
